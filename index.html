@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أثر – للعثور على المفقودات</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="nav">
+<img src="images/logo.jpg" alt="أثر" onclick="go('home')">
+<button class="menu-t" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+<nav class="links" id="links">
+<button data-v="home">🏠 الرئيسية</button>
+<button data-v="lost">📋 بلاغات المفقودات</button>
+<button data-v="found">🎁 الأغراض المعثور عليها</button>
+<button data-v="about">ℹ️ عن أثر</button>
+<button data-v="contact">🎧 تواصل معنا</button>
+<button data-v="login" class="login-btn">👤 تسجيل الدخول</button>
+</nav></div></header>
+
+<main>
+<section class="view" id="home">
+<div class="hero"><div class="hero-in">
+<div><h1>أثر – للعثور على المفقودات في الكلية التقنية بسهولة!</h1>
+<p>نساعدك في العثور على أغراضك المفقودة أو الإبلاغ عن ما تم العثور عليه داخل الكلية.</p>
+<p style="font-weight:700">لكل مفقود أثر .. ولكل أثر عودة</p></div>
+<div class="art"><img class="photo" src="images/hero.jpg" alt="الكلية التقنية مع حقيبة وجوال ومحفظة وبطاقة"></div>
+</div></div>
+<div class="search"><input id="hs" placeholder="ابحث عن غرض مفقود..." onkeydown="if(event.key==='Enter')homeSearch()"><button class="btn" onclick="homeSearch()">🔍 بحث</button></div>
+<div class="wrap">
+<div class="feats">
+<div class="feat" onclick="go('lost','form')"><div class="ic">📢</div><div><h3>أبلغ عن مفقود</h3><p>قم بنشر بلاغ عن غرض مفقود مع وصفه ومكان فقدانه.</p></div></div>
+<div class="feat" onclick="go('found','form')"><div class="ic">📦</div><div><h3>اعرض ما تم العثور عليه</h3><p>شارك الأغراض التي تم العثور عليها لمساعدة صاحبتها.</p></div></div>
+<div class="feat" onclick="go('found')"><div class="ic">⏱️</div><div><h3>استرجعي غرضك بسهولة</h3><p>خطوات بسيطة ووصول أسرع إلى أغراضك.</p></div></div>
+</div>
+<div class="sh" style="margin-top:40px"><h2>✦ أحدث البلاغات</h2><button class="btn sec" onclick="go('lost')">عرض الكل ←</button></div>
+<div class="grid" id="latest"></div>
+</div></section>
+
+<section class="view" id="lost"><div class="wrap">
+<div class="sh"><h2>بلاغات المفقودات</h2><button class="btn" onclick="document.getElementById('lostForm').scrollIntoView({behavior:'smooth'})">أبلغ عن غرض مفقود</button></div>
+<div class="bar"><input id="lq" placeholder="ابحث بالاسم..." oninput="render()"><select id="ls" onchange="render()"><option value="">كل الحالات</option><option value="lost">مفقود</option><option value="found">تم العثور عليه</option></select></div>
+<div class="chips" id="lc"></div>
+<div class="grid" id="lostGrid"></div>
+<form class="formbox" id="lostForm" novalidate data-type="lost"><h3>📢 إرسال بلاغ عن غرض مفقود</h3><div class="fg" data-f></div></form>
+</div></section>
+
+<section class="view" id="found"><div class="wrap">
+<div class="sh"><h2>الأغراض المعثور عليها</h2><button class="btn" onclick="document.getElementById('foundForm').scrollIntoView({behavior:'smooth'})">سجّلي غرضًا وجدتِه</button></div>
+<div class="bar"><input id="fq" placeholder="ابحث بالاسم..." oninput="render()"></div>
+<div class="chips" id="fc"></div>
+<div class="grid" id="foundGrid"></div>
+<form class="formbox" id="foundForm" novalidate data-type="found"><h3>📦 إضافة غرض تم العثور عليه</h3><div class="fg" data-f></div></form>
+</div></section>
+
+<section class="view" id="about"><div class="wrap">
+<div class="about"><img src="images/logo.jpg" alt="شعار أثر"><div>
+<h2 style="color:var(--navy)">من نحن؟</h2>
+<p style="margin:10px 0 20px">أثر منصة إلكترونية تهدف إلى تسهيل عملية العثور على المفقودات داخل الكلية التقنية، من خلال توفير مساحة منظمة تتيح للطالبات الإبلاغ عن أغراضهن المفقودة ومشاركة الأغراض التي تم العثور عليها.</p>
+<h2 style="color:var(--navy)">أهداف المشروع</h2>
+<ul class="goals"><li>✔️ تسهيل استرجاع المفقودات.</li><li>⏱️ توفير الوقت والجهد.</li><li>🗂️ تنظيم عملية البحث عن الأغراض داخل الكلية.</li><li>🤝 تعزيز التعاون والمساعدة بين الطالبات.</li></ul>
+</div></div></div></section>
+
+<section class="view" id="contact"><div class="wrap"><div class="center">
+<h2 style="color:var(--navy)">تواصل معنا</h2><p style="color:var(--muted);margin-bottom:16px">يسعدنا سماع اقتراحاتك واستفساراتك، نرد عليك في أقرب وقت.</p>
+<form class="formbox" id="contactForm" novalidate style="margin-top:0">
+<label>الاسم</label><input class="f" name="n"><div class="err"></div>
+<label>البريد الإلكتروني</label><input class="f" name="e" type="email"><div class="err"></div>
+<label>الرسالة</label><textarea class="f" name="m" rows="4"></textarea><div class="err"></div>
+<button class="btn" style="width:100%">إرسال</button></form>
+<div class="formbox" style="margin-top:16px"><p>📍 الكلية التقنية – مبنى الإدارة</p><p>📞 0500000000 (بيانات تجريبية)</p><p>✉️ info@athar.example</p></div>
+</div></div></section>
+
+<section class="view" id="login"><div class="wrap"><div class="center">
+<div class="formbox" style="margin-top:0"><h3 id="lt">تسجيل الدخول</h3>
+<form id="loginForm" novalidate>
+<label>البريد الإلكتروني أو اسم المستخدم</label><input class="f" name="u"><div class="err"></div>
+<label>كلمة المرور</label><input class="f" name="p" type="password"><div class="err"></div>
+<button class="btn" style="width:100%" id="lb">دخول</button></form>
+<p style="text-align:center;margin-top:14px"><a href="#" id="sw" style="color:var(--blue)" onclick="toggleReg(event)">ليس لديك حساب؟ إنشاء حساب</a></p></div>
+</div></div></section>
+</main>
+
+<footer><div class="foot"><div><b>الكلية التقنية</b><div>أثر – لكل مفقود أثر</div></div>
+<div>♡ معًا لبيئة جامعية أكثر تنظيمًا</div>
+<div class="soc"><span>𝕏</span><span>📷</span><span>👻</span></div></div>
+<div class="copy">© 2026 أثر – جميع الحقوق محفوظة</div></footer>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
